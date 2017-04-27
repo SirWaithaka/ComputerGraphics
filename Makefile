@@ -1,2 +1,4 @@
+run: map
+
 map: map.cpp
-	g++ map.cpp -o map -lglut -GL
+	g++ map.cpp -o bin/map -lglut -lGL
