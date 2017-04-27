@@ -1,5 +1,7 @@
 ## Computer Graphics using [OpenGL]()
 
+![OpenGL Logo](https://www.opengl.org/img/opengl_logo.png)
+
 Running the code
 
 ```bash
