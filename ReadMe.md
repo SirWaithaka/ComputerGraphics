@@ -1,6 +1,6 @@
 ## Computer Graphics using [OpenGL]()
 
-![OpenGL Logo](https://www.opengl.org/img/opengl_logo.png)
+![OpenGL Logo](https://www.opengl.org/img/opengl_logo.png "OpenGL")
 
 Running the code
 
@@ -12,3 +12,6 @@ make run
 ./bin/map
 ```
 
+### Resources
+* (glprogramming)[http://www.glprogramming.com/red/chapter01.html]
+* http://www.glprogramming.com/red/chapter01.html
