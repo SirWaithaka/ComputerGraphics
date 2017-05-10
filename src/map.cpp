@@ -1,18 +1,49 @@
+/*
+ * OpenGL headers
+ */
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
 
+/*
+ * Other headers
+ */
+#include <iostream>
+#include <fstream>
+
+
+using namespace std;
 
 void display()
 {  
+   /*
+    * Read map file
+    */
+   fstream inStream;
+   inStream.open("./data/map.dat", ios::in);
+   if (inStream.fail()) {
+      return;
+   }
+
+   GLint numPoints;
+   GLint numDots;
+   GLint x, y;
+   inStream >> numPoints;
+
    glClear(GL_COLOR_BUFFER_BIT);
-   glBegin(GL_POINTS);
-    glVertex2d(41.899578000000005, 3.9774445);
-    glVertex2d(41.8736506, 3.9379500999999997);
-    glVertex2d(41.8725241, 3.9362340999999996);
-    glVertex2d(41.871452999999995, 3.9339675);
-   glEnd();
+
+   for (int j = 0; j < numPoints; j ++) {
+      inStream >> numDots;
+      glBegin(GL_POINTS);
+         for (int i; i < numDots; i ++) {
+            inStream >> x >> y;
+            glVertex2i (x, y);
+         }
+      glEnd();
+   }
+
    glFlush();
+   inStream.close();
 }
 
 void init()
