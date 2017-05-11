@@ -6,7 +6,6 @@ all: init bins
 init:
 	mkdir -p bin
 
-bins: src/map.cpp src/rectangle.cpp src/dots.cpp
+bins: src/map.cpp src/dots.cpp
 	g++ src/map.cpp -o bin/map -lglut -lGL -lGLU
 	g++ src/dots.cpp -o bin/dots -lglut -lGL -lGLU
-	g++ src/rectangle.cpp -o bin/rectangle -lglut -lGL -lGLU
