@@ -20,8 +20,9 @@ void display()
     * Read map file
     */
    fstream inStream;
-   inStream.open("./data/map.dat", ios::in);
+   inStream.open("/docs/cpp/opengl/kenya/src/data/map.dat", ios::in);
    if (inStream.fail()) {
+      cout << "Couldnt open file" << endl;
       return;
    }
 
@@ -32,13 +33,9 @@ void display()
 
    glClear(GL_COLOR_BUFFER_BIT);
 
-   for (int j = 0; j < numPoints; j ++) {
-      inStream >> numDots;
+   while (inStream >> x >> y) {
       glBegin(GL_POINTS);
-         for (int i; i < numDots; i ++) {
-            inStream >> x >> y;
-            glVertex2i (x, y);
-         }
+         glVertex2i((GLint) x, (GLint) y);
       glEnd();
    }
 
