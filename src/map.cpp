@@ -11,8 +11,15 @@
 #include <iostream>
 #include <fstream>
 
-
 using namespace std;
+
+
+/*
+ * constant variables
+ */
+const GLint screenWidth = 800;
+const GLint screenHeight = 640;
+
 
 void display()
 {  
@@ -26,18 +33,17 @@ void display()
       return;
    }
 
-   GLint numPoints;
-   GLint numDots;
+   // will hold coordinate values from file
    GLint x, y;
-   inStream >> numPoints;
 
    glClear(GL_COLOR_BUFFER_BIT);
-
-   while (inStream >> x >> y) {
-      glBegin(GL_POINTS);
-         glVertex2i((GLint) x, (GLint) y);
-      glEnd();
-   }
+   
+   glBegin(GL_LINE_LOOP);
+      // read until EOF
+      while (inStream >> x >> y) {
+            glVertex2i(x, y);
+      }
+   glEnd();
 
    glFlush();
    inStream.close();
@@ -53,7 +59,7 @@ void init()
    glPointSize(4.0);
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   gluOrtho2D(0.0, 800.0, 0.0, 600.0);
+   gluOrtho2D(0.0, (GLdouble) screenWidth, 0.0, (GLdouble) screenHeight);
 
 }
 
@@ -62,7 +68,7 @@ int main(int argc, char** argv)
    glutInit(&argc, argv);
    glutInitDisplayMode(GLUT_SINGLE);
    glutInitWindowPosition(100, 100);
-   glutInitWindowSize(800, 600);
+   glutInitWindowSize(screenWidth, screenHeight);
    glutCreateWindow("Map of Kenya");
    init();
    glutDisplayFunc(display);
