@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-   fstream inStream("/docs/cpp/opengl/kenya/src/data/map.dat");
+   fstream inStream("data/map.dat");
 
    if (inStream.fail()) {
       cout << "Couldnt open file" << endl;
@@ -17,8 +17,8 @@ int main()
    int points;
    int x, y;
 
-   while (inStream << x << y) {
-      cout << x << y << endl;
+   while (inStream >> x >> y) {
+      cout << x << " " << y << endl;
    }
    inStream.close();
 }
