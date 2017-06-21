@@ -14,11 +14,12 @@ int main()
    }
 
    int lines;
-   int points;
    int x, y;
 
+   inStream >> lines;
    while (inStream >> x >> y) {
       cout << x << " " << y << endl;
    }
+   cout << lines << endl;
    inStream.close();
 }
